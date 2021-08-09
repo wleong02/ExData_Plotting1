@@ -18,11 +18,16 @@ data[,3:9] <- sapply(data[,3:9], as.numeric)
 # Subset data to 2007-02-01 and 2007-02-02
 data <- subset(data, Date == "2007-02-02" | Date == "2007-02-01")
 
-# Generate Plot 3
+# Initiate device
+png("plot3.png", width = 480, height = 480)
+
 plot(data$DateTime, data$Sub_metering_1, ylab="Energy sub metering", xlab = "", type = "n")
 lines(data$DateTime, data$Sub_metering_1, col = "black")
 lines(data$DateTime, data$Sub_metering_2, col = "red")
 lines(data$DateTime, data$Sub_metering_3, col = "blue")
-legend("topright", col = c("black","red","blue"), lty = c(1,1,1), c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), cex=0.75)
-dev.copy(png, "plot3.png")
+
+# Add legend
+legend("topright", col = c("black","red","blue"), lty = c(1,1,1), c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
+# Close device
 dev.off()

@@ -18,8 +18,11 @@ data[,3:9] <- sapply(data[,3:9], as.numeric)
 # Subset data to 2007-02-01 and 2007-02-02
 data <- subset(data, Date == "2007-02-02" | Date == "2007-02-01")
 
-# Generate Plot 1
+# Initiate device
+png("plot1.png", width = 480, height = 480)
+
 hist(data$Global_active_power, col = "red", xlab="Global Active Power (kilowatts)",
      main = "Global Active Power")
-dev.copy(png, "plot1.png")
+
+# Close device
 dev.off()
